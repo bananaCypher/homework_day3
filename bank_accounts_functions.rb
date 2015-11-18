@@ -71,9 +71,13 @@ def average_bank_account_value()
   total_cash_in_bank() / ACCOUNTS.size
 end
 
+def get_accounts_by_type(type)
+  ACCOUNTS.select { |account|  account[:type] == type } 
+end
+
 def total_business_account_value()
   total = 0
-  for account in ACCOUNTS.select { |account|  account[:type] == 'business' }
+  for account in get_accounts_by_type('business')
     total += account[:amount]
   end
   total
@@ -94,5 +98,5 @@ def largest_bank_account()
 end
 
 def largest_personal_bank_account()
-  largest_of_accounts(ACCOUNTS.select { |account|  account[:type] == 'personal' })
+  largest_of_accounts(get_accounts_by_type('personal'))
 end
