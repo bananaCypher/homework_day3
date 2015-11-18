@@ -100,3 +100,22 @@ end
 def largest_personal_bank_account()
   largest_of_accounts(get_accounts_by_type('personal'))
 end
+
+def get_holders_account(holder)
+  for account in ACCOUNTS
+    if account[:holder_name].downcase == holder.downcase
+      return account
+    end
+  end
+  return nil
+end
+
+def view_bank_account(holder)
+  account = get_holders_account(holder)
+  puts "ACCOUNT - #{account[:holder_name]}"
+  puts "====================================="
+  puts "Holder:\t\t#{account[:holder_name]}"
+  puts "Balance:\t#{account[:amount]}"
+  puts "Type:\t\t#{account[:type]}"
+  puts "====================================="
+end

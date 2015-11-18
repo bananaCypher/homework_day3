@@ -46,5 +46,7 @@ puts "the personal account holder with the most money is #{largest_personal_acco
 puts "\n"
 
 ###any other functionality you want to add.
-
+puts "view bank account of Kate"
+view_bank_account('Kate')
+puts "\n"
 
