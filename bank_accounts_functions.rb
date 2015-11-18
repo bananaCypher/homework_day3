@@ -45,4 +45,54 @@ def number_of_bank_accounts()
   ACCOUNTS.length
 end
 
+def first_bank_account_holder()
+  ACCOUNTS[0][:holder_name]
+end
 
+def print_owner_names()
+  for account in ACCOUNTS
+    puts "Owner: #{account[:holder_name]}"
+  end
+end
+
+def total_cash_in_bank()
+  total = 0
+  for account in ACCOUNTS
+    total += account[:amount]
+  end
+  total
+end
+
+def last_bank_account_holder()
+  ACCOUNTS.last[:holder_name]
+end
+
+def average_bank_account_value()
+  total_cash_in_bank() / ACCOUNTS.size
+end
+
+def total_business_account_value()
+  total = 0
+  for account in ACCOUNTS.select { |account|  account[:type] == 'business' }
+    total += account[:amount]
+  end
+  total
+end
+
+def largest_of_accounts(accounts)
+  largest_account = accounts[0]
+  for account in accounts
+    if account[:amount] > largest_account[:amount]
+      largest_account = account
+    end
+  end
+  largest_account
+end
+
+def largest_bank_account()
+  largest_of_accounts(ACCOUNTS)
+end
+
+def largest_personal_bank_account()
+  largest_of_accounts(ACCOUNTS.select { |account|  account[:type] == 'personal' })
+end
